@@ -37,3 +37,17 @@ class Types::UserType < Types::BaseObject
     Comment.where(user_id: user_id).first
   end
 end
+
+class Types::UserInputType < GraphQL::Schema::InputObject
+  graphql_name "UserInputType"
+  description "User attributes for creation/updating"
+
+  argument :id, ID, required: false
+  argument :first_name, String, required: true
+  argument :last_name, String, required: true
+  argument :street, String, required: false
+  argument :number, Integer, required: true
+  argument :city, String, required: true
+  argument :postcode, String, required: true
+  argument :country, String, required: true
+end
